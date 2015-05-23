@@ -1,0 +1,17 @@
+---
+
+- name: dependencies
+  include: depend.yml
+
+- name: setup dynamic inventory
+  include: inventory.yml
+
+- name: get latest playbook
+  include: playbook.yml
+
+- name: get latest terraform
+  include: terraform.yml
+
+- name: service
+  include: service.yml
+

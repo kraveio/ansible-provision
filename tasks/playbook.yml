@@ -1,0 +1,32 @@
+---
+
+- name: playbook - create directory
+  file:
+    state=directory
+    path={{ provision_playbook_dir }}
+
+- name: playbook - checkout latest public
+  git:
+    repo={{ provision_playbook_repo_url }}
+    version={{ provision_playbook_repo_version }}
+    depth=1
+    update=yes
+    accept_hostkey=yes
+    dest={{ provision_playbook_dir }}
+    force=yes
+    recursive=yes
+  when: "{{ provision_playbook_repo_keyfile|length == 0 }}"
+
+- name: playbook - checkout latest private
+  git:
+    repo={{ provision_playbook_repo_url }}
+    version={{ provision_playbook_repo_version }}
+    depth=1
+    update=yes
+    accept_hostkey=yes
+    dest={{ provision_playbook_dir }}
+    force=yes
+    recursive=yes
+    key_file={{ provision_playbook_repo_keyfile }}
+  when: "{{ provision_playbook_repo_keyfile|length > 0 }}"
+

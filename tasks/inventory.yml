@@ -1,0 +1,43 @@
+---
+
+- name: inventory - boto.cfg
+  template:
+    src=boto.cfg.j2
+    dest=/etc/boto.cfg
+    mode=750
+
+- name: inventory - config directories
+  file:
+    state=directory
+    path={{ provision_inventory_dir }}/{{ item }}
+    mode=0755
+  with_items: "{{ provision_environments }}"
+
+- name: inventory - ec2.ini
+  template:
+    src=ec2.ini_{{ item }}.j2
+    dest={{ provision_inventory_dir }}/{{ item }}/ec2.ini
+    mode=0755
+  with_items: "{{ provision_environments }}"
+
+- name: inventory - ec2.py
+  copy:
+    src=ec2.py
+    dest={{ provision_inventory_dir }}/{{ item }}/hosts
+    mode=755
+  with_items: "{{ provision_environments }}"
+
+- name: inventory - setup default hosts
+  file:
+    state=link
+    dest={{ provision_config_dir }}/hosts
+    src={{ provision_inventory_dir }}/{{ provision_environment_default }}/hosts
+    force=yes
+
+- name: inventory - setup default ec2.ini
+  file:
+    state=link
+    dest={{ provision_config_dir }}/ec2.ini
+    src={{ provision_inventory_dir }}/{{ provision_environment_default }}/ec2.ini
+    force=yes
+

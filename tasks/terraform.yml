@@ -1,0 +1,37 @@
+---
+
+- name: terraform - create directory
+  file:
+    state=directory
+    path={{ provision_terraform_dir }}
+
+- name: terraform - checkout latest public
+  git:
+    repo={{ provision_terraform_repo_url }}
+    version={{ provision_terraform_repo_version }}
+    depth=1
+    update=yes
+    accept_hostkey=yes
+    dest={{ provision_terraform_dir }}
+    force=yes
+    recursive=yes
+  when: "{{ provision_terraform_repo_keyfile|length == 0 }}"
+
+- name: terraform - checkout latest private
+  git:
+    repo={{ provision_terraform_repo_url }}
+    version={{ provision_terraform_repo_version }}
+    depth=1
+    update=yes
+    accept_hostkey=yes
+    dest={{ provision_terraform_dir }}
+    force=yes
+    recursive=yes
+    key_file={{ provision_terraform_repo_keyfile }}
+  when: "{{ provision_terraform_repo_keyfile|length > 0 }}"
+
+- name: terraform - private vars
+  template:
+    src=terraform.tfvars.j2
+    dest={{ provision_terraform_dir }}/terraform.tfvars
+
