@@ -3,11 +3,12 @@
 aws_access_key: ''
 aws_secret_key: ''
 aws_account_id: ''
+aws_region: ''
 
+provision_state_bucket: ''
 provision_vpc_name: ''
 provision_keypair_name: ''
 provision_private_key: '~/.ssh/current'
-provision_state_bucket: ''
 
 
 provision_config_dir: /etc/ansible
