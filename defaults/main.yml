@@ -6,7 +6,10 @@ aws_account_id: ''
 aws_region: ''
 
 provision_state_bucket: ''
+provision_state_file: ''
+provision_vpc_id: ''
 provision_vpc_name: ''
+
 provision_keypair_name: ''
 provision_private_key: '~/.ssh/current'
 
