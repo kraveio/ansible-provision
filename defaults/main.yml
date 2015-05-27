@@ -21,6 +21,7 @@ provision_playbook_repo_url: "https://github.com/gotansible/basics"
 provision_playbook_repo_version: HEAD
 provision_playbook_repo_keyfile: ''
 
+provision_keys: []
 
 provision_inventory_all_filters:
   - "tag:managed_by=ansible"

@@ -1,0 +1,15 @@
+---
+
+- name: keys - create key destination
+  file:
+    state=directory
+    path=/etc/pki/github
+    mode=0755
+
+- name: keys - copy keys
+  copy:
+    src={{ item }}
+    dest=/etc/pki/github
+    mode=600
+  with_items: provision_keys
+
