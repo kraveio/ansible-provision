@@ -12,16 +12,14 @@ provision_vpc_name: ''
 
 provision_keypair_name: ''
 provision_private_key: '~/.ssh/current'
-provision_vars_path: './provision_vars.yml'
 
+#### Folder Setup #######
 provision_config_dir: /etc/ansible
 provision_inventory_dir: "{{ provision_config_dir }}/inventory"
 provision_playbook_dir: "{{ provision_config_dir }}/playbook"
 provision_playbook_repo_url: "https://github.com/gotansible/basics"
 provision_playbook_repo_version: HEAD
 provision_playbook_repo_keyfile: ''
-
-provision_keys: []
 
 provision_inventory_all_filters:
   - "tag:managed_by=ansible"
@@ -39,6 +37,7 @@ provision_environments:
   - stage
   - demo
 
+####### Terraform ########
 
 provision_terraform_dir: /etc/terraform
 provision_terraform_repo_url: "https://github.com/kraveio/demo-deploy"
