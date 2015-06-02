@@ -1,0 +1,16 @@
+---
+
+- name: playbook - ensure known_hosts file exists
+  file:
+    state=touch
+    path=~/.ssh/known_hosts
+
+- name: playbook - get github.com RSA signature
+  shell: ssh-keyscan -H github.com
+  register: gh
+
+- name: playbook - register github.com signature
+  lineinfile: 
+    line={{gh.stdout}}
+    dest=~/.ssh/known_hosts
+

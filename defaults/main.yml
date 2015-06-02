@@ -13,6 +13,8 @@ provision_vpc_name: ''
 provision_keypair_name: ''
 provision_private_key: '~/.ssh/current'
 
+provision_keys: []
+
 #### Folder Setup #######
 provision_config_dir: /etc/ansible
 provision_inventory_dir: "{{ provision_config_dir }}/inventory"

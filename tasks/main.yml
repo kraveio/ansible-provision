@@ -6,6 +6,9 @@
 - name: setup dynamic inventory
   include: inventory.yml
 
+- name: copy keys
+  include: keys.yml
+
 - name: get latest playbook
   include: playbook.yml
 
