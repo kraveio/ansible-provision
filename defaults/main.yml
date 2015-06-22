@@ -18,6 +18,7 @@ provision_keys: []
 #### Folder Setup #######
 provision_config_dir: /etc/ansible
 provision_inventory_dir: "{{ provision_config_dir }}/inventory"
+provision_inventory_current_dir: "{{ provision_inventory_dir }}/current"
 provision_playbook_dir: "{{ provision_config_dir }}/playbook"
 provision_playbook_repo_url: "https://github.com/gotansible/basics"
 provision_playbook_repo_version: HEAD
@@ -42,7 +43,7 @@ provision_environments:
 ####### Terraform ########
 
 provision_terraform_dir: /etc/terraform
-provision_terraform_repo_url: "https://github.com/kraveio/demo-deploy"
+provision_terraform_repo_url: "https://github.com/kraveio/bootstrap"
 provision_terraform_repo_version: HEAD
 provision_terraform_repo_keyfile: ''
 

@@ -13,6 +13,12 @@
     mode=0755
   with_items: "{{ provision_environments }}"
 
+- name: inventory - config directories
+  file:
+    state=directory
+    path={{ provision_inventory_current_dir }}
+    mode=0755
+
 - name: inventory - ec2.ini
   template:
     src=ec2.ini_{{ item }}.j2
@@ -30,14 +36,21 @@
 - name: inventory - setup default hosts
   file:
     state=link
-    dest={{ provision_config_dir }}/hosts
+    dest={{ provision_inventory_current_dir }}/hosts
     src={{ provision_inventory_dir }}/{{ provision_environment_default }}/hosts
     force=yes
 
 - name: inventory - setup default ec2.ini
   file:
     state=link
-    dest={{ provision_config_dir }}/ec2.ini
+    dest={{ provision_inventory_current_dir }}/ec2.ini
     src={{ provision_inventory_dir }}/{{ provision_environment_default }}/ec2.ini
+    force=yes
+
+- name: inventory - make current directory the default hosts
+  file:
+    state=link
+    dest={{ provision_config_dir }}/hosts
+    src={{ provision_inventory_current_dir }}/
     force=yes
 
