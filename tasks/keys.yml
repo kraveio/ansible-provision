@@ -1,6 +1,5 @@
 ---
 
-
 - name: keys - ssh folder
   file: 
     state=directory

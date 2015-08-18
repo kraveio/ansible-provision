@@ -8,8 +8,8 @@
     group={{ provision_group }}
 
 - name: terraform - checkout latest public
+  sudo_user: "{{ provision_user }}"
   git:
-    sudo_user: "{{ provision_user }}"
     repo={{ provision_terraform_repo_url }}
     version={{ provision_terraform_repo_version }}
     depth=1
@@ -21,8 +21,8 @@
   when: "{{ provision_terraform_repo_keyfile|length == 0 }}"
 
 - name: terraform - checkout latest private
+  sudo_user: "{{ provision_user }}"
   git:
-    sudo_user: "{{ provision_user }}"
     repo={{ provision_terraform_repo_url }}
     version={{ provision_terraform_repo_version }}
     depth=1

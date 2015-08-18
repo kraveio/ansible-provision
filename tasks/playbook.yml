@@ -8,8 +8,8 @@
     group={{ provision_group }}
 
 - name: playbook - checkout latest public
+  sudo_user: "{{ provision_user }}"
   git:
-    sudo_user: "{{ provision_user }}"
     repo={{ provision_playbook_repo_url }}
     version={{ provision_playbook_repo_version }}
     depth=1
@@ -21,8 +21,8 @@
   when: "{{ provision_playbook_repo_keyfile|length == 0 }}"
 
 - name: playbook - checkout latest private
+  sudo_user: "{{ provision_user }}"
   git:
-    sudo_user: "{{ provision_user }}"
     repo={{ provision_playbook_repo_url }}
     version={{ provision_playbook_repo_version }}
     depth=1

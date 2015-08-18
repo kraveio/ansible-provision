@@ -1,5 +1,29 @@
 ---
 - hosts: all
   sudo: true
+  vars:
+    aws_access_key: blahblah_access_key
+    aws_secret_key: blahblah_secret_key
+    aws_account_id: blahblah_account_id
+    aws_region: us-west-2
+
+    provision_vpc_id: ""
+
   roles:
     - role: provision
+      provision_vpc_name: "demo"
+      provision_state_bucket: "state.provision.example.com"
+      provision_state_file: "genesis.tfstate"
+      provision_keypair_name: "mykepair"
+      provision_inventory_all_filters:
+        - "vpc-id={{ provision_vpc_id }}"
+
+      provision_playbook_repo_url: "ssh://git@github.com/kraveio/provision"
+      provision_playbook_repo_keyfile: "testkey"
+      provision_playbook_repo_version: "master"
+      provision_terraform_repo_url: "ssh://git@github.com/kraveio/provision"
+      provision_terraform_repo_keyfile: "testkey"
+      provision_terraform_repo_version: "master"
+      provision_keys:
+        - testkey
+

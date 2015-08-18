@@ -15,6 +15,3 @@
 - name: get latest terraform
   include: terraform.yml
 
-- name: service
-  include: service.yml
-

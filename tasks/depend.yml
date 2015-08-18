@@ -1,9 +1,9 @@
 ---
 
-- name: repo
+- name: depend - add apt repo
   apt_repository: repo='ppa:ansible/ansible'
 
-- name: install ansible
+- name: depend - install ansible
   apt:
     name={{ item }}
     cache_valid_time=3600
@@ -14,7 +14,7 @@
     - ansible
     - python-setuptools
 
-- name: depend
+- name: depend - apt git curl
   apt:
     name={{ item }}
     cache_valid_time=3600
