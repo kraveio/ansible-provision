@@ -26,3 +26,11 @@
     group={{ provision_group }}
   with_items: provision_keys
 
+- name: keys - .profile
+  template:
+    src=dot-profile.j2
+    dest=/home/{{ provision_user }}/.profile
+    mode=640
+    owner={{ provision_user }}
+    group={{ provision_group }}
+
