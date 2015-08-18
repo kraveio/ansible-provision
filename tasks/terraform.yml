@@ -31,7 +31,7 @@
     dest={{ provision_terraform_dir }}
     force=yes
     recursive=yes
-    key_file={{ provision_terraform_repo_keyfile }}
+    key_file=~/.ssh/provision/{{ provision_terraform_repo_keyfile }}
   when: "{{ provision_terraform_repo_keyfile|length > 0 }}"
 
 - name: terraform - private vars

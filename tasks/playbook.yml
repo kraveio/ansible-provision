@@ -31,6 +31,6 @@
     dest={{ provision_playbook_dir }}
     force=yes
     recursive=yes
-    key_file={{ provision_playbook_repo_keyfile }}
+    key_file=~/.ssh/provision/{{ provision_playbook_repo_keyfile }}
   when: "{{ provision_playbook_repo_keyfile|length > 0 }}"
 
