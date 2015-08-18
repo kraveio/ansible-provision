@@ -1,0 +1,14 @@
+
+- name: user - create group
+  group:
+    name={{ provision_group }}
+    state=present
+    system=no
+
+- name: create nginx user
+  user:
+    name={{ provision_user }}
+    group={{ provision_group }}
+    createhome=yes
+    system=no
+

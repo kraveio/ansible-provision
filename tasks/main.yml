@@ -3,6 +3,9 @@
 - name: dependencies
   include: depend.yml
 
+- name: user account
+  include: user.yml
+
 - name: setup dynamic inventory
   include: inventory.yml
 
