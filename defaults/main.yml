@@ -15,6 +15,9 @@ provision_private_key: '~/.ssh/current'
 
 provision_keys: []
 
+provision_user: ubuntu
+provision_group: ubuntu
+
 #### Folder Setup #######
 provision_config_dir: /etc/ansible
 provision_inventory_dir: "{{ provision_config_dir }}/inventory"

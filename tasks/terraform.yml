@@ -4,9 +4,12 @@
   file:
     state=directory
     path={{ provision_terraform_dir }}
+    owner={{ provision_user }}
+    group={{ provision_group }}
 
 - name: terraform - checkout latest public
   git:
+    sudo_user: "{{ provision_user }}"
     repo={{ provision_terraform_repo_url }}
     version={{ provision_terraform_repo_version }}
     depth=1
@@ -19,6 +22,7 @@
 
 - name: terraform - checkout latest private
   git:
+    sudo_user: "{{ provision_user }}"
     repo={{ provision_terraform_repo_url }}
     version={{ provision_terraform_repo_version }}
     depth=1
@@ -34,4 +38,6 @@
   template:
     src=terraform.tfvars.j2
     dest={{ provision_terraform_dir }}/terraform.tfvars
+    owner={{ provision_user }}
+    group={{ provision_group }}
 

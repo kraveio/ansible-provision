@@ -1,15 +1,29 @@
 ---
 
+
+- name: keys - ssh folder
+  file: 
+    state=directory
+    path=/home/{{ provision_user }}/.ssh
+    mode=0700
+    owner={{ provision_user }}
+    group={{ provision_group }}
+
+
 - name: keys - create key destination
   file:
     state=directory
-    path=~/.ssh/provision
-    mode=0755
+    path=/home/{{ provision_user }}/.ssh/provision
+    mode=0700
+    owner={{ provision_user }}
+    group={{ provision_group }}
 
 - name: keys - copy keys
   copy:
     src={{ item }}
-    dest=~/.ssh/provision/
+    dest=/home/{{ provision_user }}/.ssh/provision/
     mode=600
+    owner={{ provision_user }}
+    group={{ provision_group }}
   with_items: provision_keys
 

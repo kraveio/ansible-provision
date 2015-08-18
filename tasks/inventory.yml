@@ -5,12 +5,16 @@
     src=boto.cfg.j2
     dest=/etc/boto.cfg
     mode=750
+    owner={{ provision_user }}
+    group={{ provision_group }}
 
 - name: inventory - config directories
   file:
     state=directory
     path={{ provision_inventory_dir }}/{{ item }}
     mode=0755
+    owner={{ provision_user }}
+    group={{ provision_group }}
   with_items: "{{ provision_environments }}"
 
 - name: inventory - config directories
@@ -18,12 +22,16 @@
     state=directory
     path={{ provision_inventory_current_dir }}
     mode=0755
+    owner={{ provision_user }}
+    group={{ provision_group }}
 
 - name: inventory - ec2.ini
   template:
     src=ec2.ini_{{ item }}.j2
     dest={{ provision_inventory_dir }}/{{ item }}/ec2.ini
     mode=0755
+    owner={{ provision_user }}
+    group={{ provision_group }}
   with_items: "{{ provision_environments }}"
 
 - name: inventory - ec2.py
@@ -31,6 +39,8 @@
     src=ec2.py
     dest={{ provision_inventory_dir }}/{{ item }}/hosts
     mode=755
+    owner={{ provision_user }}
+    group={{ provision_group }}
   with_items: "{{ provision_environments }}"
 
 - name: inventory - setup default hosts
@@ -39,6 +49,8 @@
     dest={{ provision_inventory_current_dir }}/hosts
     src={{ provision_inventory_dir }}/{{ provision_environment_default }}/hosts
     force=yes
+    owner={{ provision_user }}
+    group={{ provision_group }}
 
 - name: inventory - setup default ec2.ini
   file:
@@ -46,6 +58,8 @@
     dest={{ provision_inventory_current_dir }}/ec2.ini
     src={{ provision_inventory_dir }}/{{ provision_environment_default }}/ec2.ini
     force=yes
+    owner={{ provision_user }}
+    group={{ provision_group }}
 
 - name: inventory - make current directory the default hosts
   file:
@@ -53,4 +67,6 @@
     dest={{ provision_config_dir }}/hosts
     src={{ provision_inventory_current_dir }}/
     force=yes
+    owner={{ provision_user }}
+    group={{ provision_group }}
 

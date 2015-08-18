@@ -2,15 +2,21 @@
 
 - name: playbook - ensure known_hosts file exists
   file:
+    sudo_user: "{{ provision_user }}"
     state=touch
     path=~/.ssh/known_hosts
+    owner={{ provision_user }}
+    group={{ provision_group }}
 
 - name: playbook - get github.com RSA signature
   shell: ssh-keyscan -H github.com
+    sudo_user: "{{ provision_user }}"
   register: gh
 
 - name: playbook - register github.com signature
   lineinfile: 
+    sudo_user: "{{ provision_user }}"
     line={{gh.stdout}}
     dest=~/.ssh/known_hosts
-
+    owner={{ provision_user }}
+    group={{ provision_group }}
