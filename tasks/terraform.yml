@@ -47,5 +47,6 @@
     path=/etc/terraform
     owner={{ provision_user }}
     group={{ provision_group }}
+    mode=0750
 
 
