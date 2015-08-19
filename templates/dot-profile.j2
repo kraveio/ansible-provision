@@ -37,7 +37,7 @@ function start_agent {
 	/usr/bin/ssh-add ~/.ssh/current
 {% for path in provision_keys %}
 	ssh-add ~/.ssh/provision/{{ path | basename}}
-{% endif %}
+{% endfor %}
 
 }
 
