@@ -34,3 +34,10 @@
     key_file=~/.ssh/provision/{{ provision_playbook_repo_keyfile }}
   when: "{{ provision_playbook_repo_keyfile|length > 0 }}"
 
+- name: playbook - permissions
+  file:
+    path=/etc/ansible
+    owner={{ provision_user }}
+    group={{ provision_group }}
+
+

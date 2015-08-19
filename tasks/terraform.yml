@@ -41,3 +41,11 @@
     owner={{ provision_user }}
     group={{ provision_group }}
 
+
+- name: terraform - permissions
+  file:
+    path=/etc/terraform
+    owner={{ provision_user }}
+    group={{ provision_group }}
+
+
