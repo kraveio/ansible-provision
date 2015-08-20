@@ -36,7 +36,7 @@
 
 - name: terraform - private vars
   template:
-    src=terraform.tfvars.j2
+    src=terraform/terraform.tfvars.j2
     dest={{ provision_terraform_dir }}/terraform.tfvars
     owner={{ provision_user }}
     group={{ provision_group }}

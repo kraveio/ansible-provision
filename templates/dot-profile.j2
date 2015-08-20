@@ -23,6 +23,11 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+if [ -d "/opt/terraform" ] ; then
+    PATH="/opt/terraform:$PATH"
+	alias tf="terraform"
+fi
+
 
 SSH_ENV="$HOME/.ssh/environment"
 
