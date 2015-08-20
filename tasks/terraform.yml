@@ -51,6 +51,7 @@
   with_items:
     - apply
     - plan
+    - destroy
 
 - name: terraform - permissions
   file:

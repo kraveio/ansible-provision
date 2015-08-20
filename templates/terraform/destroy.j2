@@ -14,7 +14,4 @@ fi
 
 cd $1
 
-terraform get -update
-terraform apply -var-file=../terraform.tfvars
-
-terraform remote config -backend=s3 -backend-config="bucket={{ provision_state_bucket }}" -backend-config="key=$1.tfstate"
+terraform destroy
