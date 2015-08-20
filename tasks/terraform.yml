@@ -41,6 +41,16 @@
     owner={{ provision_user }}
     group={{ provision_group }}
 
+- name: terraform - private vars
+  template:
+    src=terraform/{{ item }}.j2
+    dest={{ provision_terraform_dir }}/{{ item }}
+    owner={{ provision_user }}
+    group={{ provision_group }}
+    mode=750
+  with_items:
+    - apply
+    - plan
 
 - name: terraform - permissions
   file:
