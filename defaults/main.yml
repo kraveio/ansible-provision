@@ -50,4 +50,9 @@ provision_terraform_repo_url: "https://github.com/kraveio/bootstrap"
 provision_terraform_repo_version: HEAD
 provision_terraform_repo_keyfile: ''
 
+####### GENESIS TF
+provision_vpc_zone: a
+provision_vpc_zone_alt: b
+provision_aws_vpc_name: ""
+provision_jump_access_cidr: "65.200.54.234/32"
 

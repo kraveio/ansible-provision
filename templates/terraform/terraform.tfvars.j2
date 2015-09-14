@@ -5,6 +5,11 @@ aws_secret_key = "{{ aws_secret_key }}"
 aws_account_id = "{{ aws_account_id }}"
 aws_region = "{{ aws_region }}"
 
+vpc_zone = "{{ aws_zone }}"
+vpc_zone_alt = "{{ aws_zone_alt }}"
+
+aws_vpc_name = "{{ provision_vpc_name }}"
+
 vpc_id = "{{ provision_vpc_id }}"
 vpc_name = "{{ provision_vpc_name }}"
 
@@ -17,4 +22,6 @@ state_file_vpc = "{{ provision_state_file }}"
 state_file_security = "security.tfstate"
 state_file_mind = "mind.tfstate"
 state_file_frontend = "frontent.tfstate"
+
+jump_access_cidr = "{{ provision_jump_access_cidr }}"
 
